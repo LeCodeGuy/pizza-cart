@@ -5,40 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfect Pizza</title>
-    <link rel="icon" type="image/x-icon" href="../personal-page-no-framework/images/favicon.ico">
-    <link rel="stylesheet" href="../perfect-pizza/css/simple-grid/grid/simple-grid.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./css/simple-grid/simple-grid.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script defer src="//unpkg.com/alpinejs" defer></script>
+    <script src="./js/cart.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div  x-data="cart" class="container">
         <div class="row">
             <div class="col-12">
                 <h1>Perfect Pizza</h1>
             </div>
         </div>
+        <div class="row contact-us">
+            <div class="col-12">
+                <h2>Shopping Cart</h2>
+                <!-- Small Pizza Row -->
+                <div class="cartRow">
+                    <div class="cartCol">Small</div>
+                    <div class="cartCol">
+                        <button class="btnRound smAdd" @click="increaseSmall">+</button>
+                        <button class="btnRound smSub" @click="decreaseSmall">-</button>
+                    </div>                    
+                    <div class="cartCol" x-text="smallCount.toFixed(2)">0.00</div>
+                </div>
+                <!-- Medium Pizza Row -->
+                <div class="cartRow">
+                    <div class="cartCol">Medium</div>
+                    <div class="cartCol">
+                        <button class="btnRound mdAdd" @click="increaseMedium">+</button>
+                        <button class="btnRound mdSub" @click="decreaseMedium">-</button>
+                    </div>
+                    <div class="cartCol" x-text="mediumCount.toFixed(2)">0.00</div>
+                </div>
+                <!-- Large Pizza Row -->
+                <div class="cartRow">
+                    <div class="cartCol">Large</div>
+                    <div class="cartCol">
+                        <button class="btnRound lgAdd" @click="increaseLarge">+</button>
+                        <button class="btnRound lgSub" @click="decreaseLarge">-</button>
+                    </div>
+                    <div class="cartCol" x-text="largeCount.toFixed(2)">0.00</div>
+                </div>
+                <!-- Total Row -->
+                <div class="cartRow">
+                    <div class="cartCol">Total cost</div>
+                    <div class="cartCol"></div>
+                    <div class="cartCol" x-text="total.toFixed(2)">0.00</div>
+                </div>
+                <div class="cartRow" x-text="message" x-model="message"></div>
+                <div class="cartRow">
+                    <label class="cartCol" for="amountDue" x-show="pay">payment amount</label>
+                    <div class="cartCol" x-show="pay"></div>
+                    <input class="cartCol" type="number" name="amountDue" id="amountDue" x-show="pay" x-model="payAmount" x-text="payAmount.toFixed(2)">
+                </div>
+                
+                <!-- <button type="button" class="btn">Check out</button> -->
+                <button type="button" class="btn" @click="checkout_onClick" x-show="checkout">Check out</button>
+                <button type="button" class="btn" @click="pay_onClick" x-show="pay">Pay</button>
+            </div>
+        </div>
         <div class="row">
             <div class="col-4 small box">
                 <h2>Small Pizza</h2>
-                <img src="../perfect-pizza/images/pizza.png" alt="pizza image">
+                <img src="./images/pizza.png" alt="pizza image">
                 <h3>R59.00</h3>
                 <div>
                     Small pizza with 3 toppings. 1 meat topping. 3 or less other toppings.
                 </div>
+                <button class="btn" type="button" @click="increaseSmall">Buy</button>
             </div>
             <div class="col-4 medium box">
                 <h2>Medium Pizza</h2>
-                <img src="../perfect-pizza/images/pizza.png" alt="pizza image">
+                <img src="./images/pizza.png" alt="pizza image">
                 <h3>R99.00</h3>
                 <div>
                     Medium margeritha pizza with 3 toppings max. 2 or less meat toppings. 3 or less other toppings.
                 </div>
+                <button class="btn" type="button" @click="increaseMedium">Buy</button>
             </div>
             <div class="col-4 large box">
                 <h2>Large Pizza</h2>
-                <img src="../perfect-pizza/images/pizza.png" alt="pizza image">
+                <img src="./images/pizza.png" alt="pizza image">
                 <h3>R149.00</h3>
                 <div>
                     Large margeritha pizza with 3 toppings max. 3 meat toppings max. 3 or less other toppings.
                 </div>
+                <button class="btn" type="button" @click="increaseLarge">Buy</button>
             </div>
         </div>
         <div class="row contact-us">
