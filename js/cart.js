@@ -67,7 +67,7 @@ function myCart (){
             this.pay = true;
         },
         pay_onClick(){
-            if(Number(this.total).toFixed(2) === Number(this.payAmount).toFixed(2)){
+            if(Number(this.payAmount).toFixed(2) >= Number(this.total).toFixed(2)){
                 this.message = "🤤 Enjoy your pizza!";
                 this.smallCount = 0;
                 this.mediumCount = 0;
@@ -85,7 +85,7 @@ function myCart (){
             }
             else{
                 this.message = "😳 Oops! - That is not enough money.";
-                
+
                 setTimeout(()=>{                    
                     this.message = "";
                 }
