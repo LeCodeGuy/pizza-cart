@@ -50,13 +50,13 @@
                 </div>
                 <!-- Total Row -->
                 <div class="cartRow">
-                    <div class="cartCol">Total cost</div>
+                    <div class="cartCol">Total Cost</div>
                     <div class="cartCol"></div>
                     <div class="cartCol" x-text="total.toFixed(2)">0.00</div>
                 </div>
-                <div class="cartRow" x-text="message" x-model="message"></div>
+                <div class="cartRow message" x-text="message" x-model="message"></div>
                 <div class="cartRow">
-                    <label class="cartCol" for="amountDue" x-show="pay">payment amount</label>
+                    <label class="cartCol" for="amountDue" x-show="pay">Payment Amount</label>
                     <div class="cartCol" x-show="pay"></div>
                     <!-- <input class="cartCol" type="number" name="amountDue" id="amountDue" x-show="pay" x-model="payAmount" x-text="payAmount.toFixed(2)"> -->
                     <input class="cartCol" type="number" name="amountDue" id="amountDue" x-show="pay" x-model="payAmount">
